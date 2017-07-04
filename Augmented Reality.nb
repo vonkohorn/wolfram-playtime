@@ -1,0 +1,283 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11358,        275]
+NotebookOptionsPosition[     10988,        257]
+NotebookOutlinePosition[     11342,        273]
+CellTagsIndexPosition[     11299,        270]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"preProcessFrame", "=", "\[IndentingNewLine]", 
+   RowBox[{"img", "\[Function]", 
+    RowBox[{"ImageReflect", "[", 
+     RowBox[{
+      RowBox[{"ColorConvert", "[", 
+       RowBox[{"img", ",", "\"\<Grayscale\>\""}], "]"}], ",", 
+      RowBox[{"Left", "\[Rule]", "Right"}]}], "]"}]}]}], ";"}]], "Input", \
+"HiddenMaterial",
+ CellChangeTimes->{
+  3.676312718249077*^9, 3.676313019786725*^9, {3.677955420001458*^9, 
+   3.6779554247291594`*^9}, 3.685841224834805*^9, {3.687571951017209*^9, 
+   3.6875719647010927`*^9}},
+ CellID->518543202,
+ ExpressionUUID -> "aff4efac-e3fd-440c-9f17-0c60d02a16ec"],
+
+Cell[BoxData[
+ RowBox[{"DynamicModule", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"frames", ",", "flow", ",", "curl", ",", "mask", ",", 
+     RowBox[{"time", "=", "0"}], ",", 
+     RowBox[{"W", "=", " ", "320"}], ",", 
+     RowBox[{"H", "=", "240"}], ",", 
+     RowBox[{"w", "=", "240"}], ",", 
+     RowBox[{"h", "=", "160"}], ",", 
+     RowBox[{"r", "=", "64"}]}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "specify", " ", "a", " ", "sensitive", " ", "image", " ", "region"}], " ",
+     "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"mask", "=", 
+     RowBox[{"ImageCompose", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ConstantImage", "[", 
+        RowBox[{"0", ",", 
+         RowBox[{"{", 
+          RowBox[{"W", ",", "H"}], "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"ImageAdjust", "[", 
+        RowBox[{"Image", "[", 
+         RowBox[{"GaussianMatrix", "[", 
+          RowBox[{"r", "/", "2"}], "]"}], "]"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"w", ",", "h"}], "}"}]}], "\[IndentingNewLine]", "]"}]}], ";",
+     "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "initialize", " ", "the", " ", "optical", " ", "flow", " ", 
+      "acquisition"}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"frames", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"preProcessFrame", "@", 
+        RowBox[{"CurrentImage", "[", "]"}]}], ",", 
+       RowBox[{"{", "2", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"flow", "=", 
+     RowBox[{"First", "@", 
+      RowBox[{"ImageDisplacements", "[", "frames", "]"}]}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Graphics", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Inset", "[", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+           RowBox[{
+           "read", " ", "and", " ", "display", " ", "camera", " ", "image"}], 
+           ",", " ", 
+           RowBox[{"determine", " ", "the", " ", "curl"}]}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "frames", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+              "=", 
+             RowBox[{
+             "frames", "\[LeftDoubleBracket]", "2", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+             "frames", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}],
+              "=", 
+             RowBox[{"preProcessFrame", "@", 
+              RowBox[{"CurrentImage", "[", "]"}]}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"flow", "=", 
+             RowBox[{"First", "@", 
+              RowBox[{"ImageDisplacements", "[", 
+               RowBox[{"frames", ",", 
+                RowBox[{"0.7", "flow"}]}], "]"}]}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"curl", "=", 
+             RowBox[{"Image", "@", 
+              RowBox[{"listCurl", "@", "flow"}]}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"time", "-=", " ", 
+             RowBox[{"2", " ", 
+              RowBox[{"ImageMeasurements", "[", 
+               RowBox[{"curl", ",", "\"\<Mean\>\"", ",", 
+                RowBox[{"Masking", "\[Rule]", "mask"}]}], "]"}]}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+            "frames", "\[LeftDoubleBracket]", "2", 
+             "\[RightDoubleBracket]"}]}], "\[IndentingNewLine]", "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"W", ",", "H"}], "}"}]}], "\[IndentingNewLine]", "]"}], 
+        ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"Inset", "[", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"display", " ", "clock"}], " ", "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"ClockGauge", "[", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"DatePlus", "[", 
+               RowBox[{
+                RowBox[{"Date", "[", "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"Round", "[", 
+                   RowBox[{
+                    RowBox[{"5", " ", "time"}], ",", "5"}], "]"}], ",", 
+                  "\"\<Minute\>\""}], "}"}]}], "]"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"GaugeStyle", "\[Rule]", " ", 
+               InterpretationBox[
+                ButtonBox[
+                 TooltipBox[
+                  GraphicsBox[{
+                    {GrayLevel[0], RectangleBox[{0, 0}]}, 
+                    {GrayLevel[0], RectangleBox[{1, -1}]}, 
+                    {RGBColor[1, 0.75, 0], RectangleBox[{0, -1}, {2, 1}]}},
+                   AspectRatio->1,
+                   Frame->True,
+                   FrameStyle->RGBColor[0.6666666666666666, 0.5, 0.],
+                   FrameTicks->None,
+                   
+                   ImageSize->
+                    Dynamic[{
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}],
+                   PlotRangePadding->None],
+                  "RGBColor[1, 0.75, 0]"],
+                 Appearance->None,
+                 BaseStyle->{},
+                 BaselinePosition->Baseline,
+                 ButtonFunction:>With[{Typeset`box$ = EvaluationBox[]}, 
+                   If[
+                    Not[
+                    AbsoluteCurrentValue["Deployed"]], 
+                    SelectionMove[Typeset`box$, All, Expression]; 
+                    FrontEnd`Private`$ColorSelectorInitialAlpha = 1; 
+                    FrontEnd`Private`$ColorSelectorInitialColor = 
+                    RGBColor[1, 0.75, 0]; 
+                    FrontEnd`Private`$ColorSelectorUseMakeBoxes = True; 
+                    MathLink`CallFrontEnd[
+                    FrontEnd`AttachCell[Typeset`box$, 
+                    FrontEndResource["RGBColorValueSelector"], {
+                    0, {Left, Bottom}}, {Left, Top}, 
+                    "ClosingActions" -> {
+                    "SelectionDeparture", "ParentChanged", 
+                    "EvaluatorQuit"}]]]],
+                 DefaultBaseStyle->{},
+                 Evaluator->Automatic,
+                 Method->"Preemptive"],
+                RGBColor[1, 0.75, 0],
+                Editable->False,
+                Selectable->False]}], ",", "\[IndentingNewLine]", 
+              RowBox[{"LabelStyle", "\[Rule]", " ", "White"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"GaugeFaceStyle", "\[Rule]", " ", 
+               RowBox[{"Opacity", "[", "0.1", "]"}]}]}], 
+             "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"UpdateInterval", "\[Rule]", "1"}]}], 
+           "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"w", ",", "h"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "0"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"2", "r"}], ",", 
+            RowBox[{"2", "r"}]}], "}"}]}], "\[IndentingNewLine]", "]"}]}], 
+       "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "W"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "H"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ImageSize", "\[Rule]", " ", 
+       RowBox[{"{", 
+        RowBox[{"W", ",", "H"}], "}"}]}]}], "\[IndentingNewLine]", "]"}]}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.676312321552137*^9, 3.676312327109552*^9}, {
+   3.676312422499235*^9, 3.676312442433586*^9}, {3.6763126812735147`*^9, 
+   3.67631268170091*^9}, {3.676312729910647*^9, 3.6763127314250593`*^9}, {
+   3.6763127833745117`*^9, 3.676312910938036*^9}, 3.676313307004035*^9, 
+   3.676313421867021*^9, {3.676313457969283*^9, 3.6763134710730867`*^9}, {
+   3.676313525354207*^9, 3.676313526215302*^9}, {3.67631357784871*^9, 
+   3.676313578783231*^9}, {3.6763143461038322`*^9, 3.676314375912781*^9}, {
+   3.676314420437545*^9, 3.676314445928466*^9}, {3.676314503638913*^9, 
+   3.676314504534288*^9}, {3.676314619595611*^9, 3.676314639935278*^9}, {
+   3.676314793578992*^9, 3.676314839676548*^9}, {3.6763149368153467`*^9, 
+   3.676314937274584*^9}, {3.67631504018016*^9, 3.676315041362033*^9}, {
+   3.676315455782443*^9, 3.6763154577609377`*^9}, {3.676315492318*^9, 
+   3.676315493572226*^9}, {3.6763156416784678`*^9, 3.676315642003594*^9}, 
+   3.6763156773499603`*^9, 3.6763165736228523`*^9, {3.6775618431296787`*^9, 
+   3.677561865527029*^9}, {3.6775619016750813`*^9, 3.6775619084131517`*^9}, {
+   3.677562078965828*^9, 3.677562097537386*^9}, 3.677563480596252*^9, {
+   3.677565303936308*^9, 3.677565406014573*^9}, {3.677565942870788*^9, 
+   3.677565943014543*^9}, 3.677955012393577*^9, {3.6885980365627213`*^9, 
+   3.688598037664515*^9}, {3.688598070347137*^9, 3.688598070435104*^9}, {
+   3.688598133330399*^9, 3.688598135577312*^9}},
+ CellID->666956488,
+ ExpressionUUID -> "53975eab-1a1f-433b-9579-8c94465a1250"],
+
+Cell[BoxData[" "], "Input",
+ CellChangeTimes->{3.685783665875898*^9},
+ ExpressionUUID -> "a8474151-c60e-4032-8447-aaa5bad94c80"]
+},
+WindowSize->{808, 1002},
+WindowMargins->{{Automatic, 402}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 9, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 628, 15, 54, "Input",
+ CellID->518543202],
+Cell[1189, 37, 9664, 214, 915, "Input",
+ CellID->666956488],
+Cell[10856, 253, 128, 2, 32, "Input"]
+}
+]
+*)
+

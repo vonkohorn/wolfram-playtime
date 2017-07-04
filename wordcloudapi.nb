@@ -1,0 +1,680 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     26931,        672]
+NotebookOptionsPosition[     26009,        633]
+NotebookOutlinePosition[     26361,        649]
+CellTagsIndexPosition[     26318,        646]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+This function deploys an APIFunction to the Cloud.
+Requires a single argument, x, which is a String.
+Returns a WordCloud Image (PNG format).\
+\>", "Subsection",
+ CellChangeTimes->{{3.6894430328605537`*^9, 3.689443085385365*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", 
+  RowBox[{
+   RowBox[{"APIFunction", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\"\<x\>\"", "\[Rule]", "\"\<String\>\""}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"WordCloud", "[", "#x", "]"}], "&"}], ",", "\"\<PNG\>\""}], 
+    "]"}], ",", "\"\<wordcloudapi\>\"", ",", 
+   RowBox[{"Permissions", "\[Rule]", "\"\<Public\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.689441805422289*^9, 3.6894418688920937`*^9}, {
+  3.689441928707288*^9, 3.68944193013019*^9}, {3.689442010242942*^9, 
+  3.689442022530719*^9}, {3.689442085442624*^9, 3.689442089784803*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/user-ad70dea9-e393-\
+43de-a680-a228d820f2ab/wordcloudapi\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/user-ad70dea9-e393-\
+43de-a680-a228d820f2ab/wordcloudapi\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/user-ad70dea9-e393-43de-a680-\
+a228d820f2ab/wordcloudapi"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/user-ad70dea9-e393-43de-a680-\
+a228d820f2ab/wordcloudapi"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/user-ad70dea9-e393-43de-a680-\
+a228d820f2ab/wordcloudapi", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/user-ad70dea9-e393-43de-a680-\
+a228d820f2ab/wordcloudapi"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.689441944633193*^9, 3.689442025085499*^9, 
+  3.689442103582337*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"corpus", "=", 
+   RowBox[{"ExampleData", "[", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Text\>\"", ",", " ", "\"\<AliceInWonderland\>\""}], "}"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"splitCorpus", "=", 
+   RowBox[{"StringSplit", "[", 
+    RowBox[{"corpus", ",", "\"\< \>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", "splitCorpus", "]"}]}], "Input",
+ CellChangeTimes->{{3.689443270020624*^9, 3.689443298487636*^9}, {
+  3.689443398594934*^9, 3.689443400765314*^9}, {3.6894435119009523`*^9, 
+  3.689443512262508*^9}, {3.689443554667408*^9, 3.6894435821286163`*^9}}],
+
+Cell[BoxData["9646"], "Output",
+ CellChangeTimes->{
+  3.689443539069996*^9, {3.6894435732915087`*^9, 3.68944358328894*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"WordCloud", "[", "corpus", "]"}]], "Input",
+ CellChangeTimes->{{3.689443346176976*^9, 3.689443350524871*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "WordCloud","nomem",
+   "\"Not enough memory available to compute the word cloud.\"",2,14,3,
+   27602153223970640336,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.689443405805385*^9, 3.689443518212427*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TextStructure", "[", 
+  "\"\<Hello, this is a test of the emergency broadcast system.\>\"", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.689443661989559*^9, 3.689443684992358*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[GridBox[{
+     {
+      InterpretationBox[GridBox[{
+         {
+          TemplateBox[{"\[ThinSpace]","\" \"",InterpretationBox[
+             GridBox[{{
+                TemplateBox[{"\[ThinSpace]", "\" \"", 
+                  InterpretationBox[
+                   GridBox[{{"\"Hello\""}, {
+                    StyleBox["\"Interjection\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                   TextElement["Hello", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Interjection"]]]]}, 
+                 "RowWithSeparators"]}, {
+                StyleBox["\"Interjection\"", "TextElementLabel"]}}, BaseStyle -> 
+              "TextElementGrid"], 
+             TextElement[{
+               TextElement["Hello", 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "Interjection"]]]}, 
+              Association[
+              "GrammaticalUnit" -> 
+               Entity["GrammaticalUnit", "Interjection"]]]],InterpretationBox[
+            
+             GridBox[{{"\",\""}, {
+                StyleBox["\"Punctuation\"", "TextElementLabel"]}}, BaseStyle -> 
+              "TextElementGrid"], 
+             TextElement[",", 
+              Association[
+              "GrammaticalUnit" -> 
+               Entity["GrammaticalUnit", "Punctuation"]]]],InterpretationBox[
+             GridBox[{{
+                TemplateBox[{"\[ThinSpace]", "\" \"", 
+                  InterpretationBox[
+                   GridBox[{{"\"this\""}, {
+                    StyleBox["\"Determiner\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                   TextElement["this", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]]]}, 
+                 "RowWithSeparators"]}, {
+                StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, BaseStyle -> 
+              "TextElementGrid"], 
+             TextElement[{
+               TextElement["this", 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "Determiner"]]]}, 
+              Association[
+              "GrammaticalUnit" -> Entity["GrammaticalUnit", "NounPhrase"]]]],
+            InterpretationBox[
+             GridBox[{{
+                TemplateBox[{"\[ThinSpace]", "\" \"", 
+                  InterpretationBox[
+                   GridBox[{{"\"is\""}, {
+                    StyleBox["\"Verb\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                   TextElement["is", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]]], 
+                  InterpretationBox[
+                   GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"a\""}, {
+                    StyleBox["\"Determiner\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\"test\""}, {
+                    StyleBox["\"Noun\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["test", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Noun"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["test", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"of\""}, {
+                    StyleBox["\"Preposition\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["of", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"the\""}, {
+                    StyleBox["\"Determiner\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Determiner"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\"emergency\""}, {
+                    StyleBox["\"Noun\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["emergency", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\"broadcast\""}, {
+                    StyleBox["\"Noun\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["broadcast", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\"system\""}, {
+                    StyleBox["\"Noun\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["system", 
+                    Association["GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Noun"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["emergency", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+                    
+                    TextElement["broadcast", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+                    
+                    TextElement["system", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox[
+                    "\"Prepositional Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["of", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["emergency", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+                    
+                    TextElement["broadcast", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+                    
+                    TextElement["system", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                   TextElement[{
+                    TextElement[{
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["test", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement[{
+                    TextElement["of", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["emergency", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+                    
+                    TextElement["broadcast", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+                    
+                    TextElement["system", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]]}, 
+                 "RowWithSeparators"]}, {
+                StyleBox["\"Verb Phrase\"", "TextElementLabel"]}}, BaseStyle -> 
+              "TextElementGrid"], 
+             TextElement[{
+               TextElement["is", 
+                Association[
+                "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+               TextElement[{
+                 TextElement[{
+                   TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                   TextElement["test", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "NounPhrase"]]], 
+                 TextElement[{
+                   TextElement["of", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                   TextElement[{
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["emergency", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+                    
+                    TextElement["broadcast", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+                    
+                    TextElement["system", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+              Association[
+              "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]]],
+            InterpretationBox[
+             GridBox[{{"\".\""}, {
+                StyleBox["\"Punctuation\"", "TextElementLabel"]}}, BaseStyle -> 
+              "TextElementGrid"], 
+             TextElement[".", 
+              Association[
+              "GrammaticalUnit" -> 
+               Entity["GrammaticalUnit", "Punctuation"]]]]},
+           "RowWithSeparators"]},
+         {
+          StyleBox["\<\"Sentence\"\>", "TextElementLabel"]}
+        },
+        BaseStyle->"TextElementGrid"],
+       TextElement[{
+         TextElement[{
+           TextElement["Hello", 
+            Association[
+            "GrammaticalUnit" -> Entity["GrammaticalUnit", "Interjection"]]]}, 
+          Association[
+          "GrammaticalUnit" -> Entity["GrammaticalUnit", "Interjection"]]], 
+         TextElement[",", 
+          Association[
+          "GrammaticalUnit" -> Entity["GrammaticalUnit", "Punctuation"]]], 
+         TextElement[{
+           TextElement["this", 
+            Association[
+            "GrammaticalUnit" -> Entity["GrammaticalUnit", "Determiner"]]]}, 
+          Association[
+          "GrammaticalUnit" -> Entity["GrammaticalUnit", "NounPhrase"]]], 
+         TextElement[{
+           TextElement["is", 
+            Association[
+            "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+           TextElement[{
+             TextElement[{
+               TextElement["a", 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "Determiner"]]], 
+               TextElement["test", 
+                Association[
+                "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+              Association[
+              "GrammaticalUnit" -> Entity["GrammaticalUnit", "NounPhrase"]]], 
+             
+             TextElement[{
+               TextElement["of", 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "Preposition"]]], 
+               TextElement[{
+                 TextElement["the", 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "Determiner"]]], 
+                 TextElement["emergency", 
+                  Association[
+                  "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+                 TextElement["broadcast", 
+                  Association[
+                  "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+                 TextElement["system", 
+                  Association[
+                  "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+              Association[
+              "GrammaticalUnit" -> 
+               Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+            Association[
+            "GrammaticalUnit" -> Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+          Association[
+          "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]], 
+         TextElement[".", 
+          Association[
+          "GrammaticalUnit" -> Entity["GrammaticalUnit", "Punctuation"]]]}, 
+        Association[
+        "GrammaticalUnit" -> Entity["GrammaticalUnit", "Sentence"]]]]}
+    },
+    DefaultBaseStyle->"Column",
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Column"],
+  TextElement[{
+    TextElement[{
+      TextElement[{
+        TextElement["Hello", 
+         Association[
+         "GrammaticalUnit" -> Entity["GrammaticalUnit", "Interjection"]]]}, 
+       Association[
+       "GrammaticalUnit" -> Entity["GrammaticalUnit", "Interjection"]]], 
+      TextElement[",", 
+       Association[
+       "GrammaticalUnit" -> Entity["GrammaticalUnit", "Punctuation"]]], 
+      TextElement[{
+        TextElement["this", 
+         Association[
+         "GrammaticalUnit" -> Entity["GrammaticalUnit", "Determiner"]]]}, 
+       Association[
+       "GrammaticalUnit" -> Entity["GrammaticalUnit", "NounPhrase"]]], 
+      TextElement[{
+        TextElement["is", 
+         Association["GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+        TextElement[{
+          TextElement[{
+            TextElement["a", 
+             Association[
+             "GrammaticalUnit" -> Entity["GrammaticalUnit", "Determiner"]]], 
+            TextElement["test", 
+             Association[
+             "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+           Association[
+           "GrammaticalUnit" -> Entity["GrammaticalUnit", "NounPhrase"]]], 
+          TextElement[{
+            TextElement["of", 
+             Association[
+             "GrammaticalUnit" -> Entity["GrammaticalUnit", "Preposition"]]], 
+            
+            TextElement[{
+              TextElement["the", 
+               Association[
+               "GrammaticalUnit" -> Entity["GrammaticalUnit", "Determiner"]]], 
+              TextElement["emergency", 
+               Association[
+               "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+              TextElement["broadcast", 
+               Association[
+               "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]], 
+              TextElement["system", 
+               Association[
+               "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+             Association[
+             "GrammaticalUnit" -> Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+           
+           Association[
+           "GrammaticalUnit" -> 
+            Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+         Association[
+         "GrammaticalUnit" -> Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+       Association[
+       "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]], 
+      TextElement[".", 
+       Association[
+       "GrammaticalUnit" -> Entity["GrammaticalUnit", "Punctuation"]]]}, 
+     Association[
+     "GrammaticalUnit" -> 
+      Entity["GrammaticalUnit", "Sentence"]]]}]]], "Output",
+ CellChangeTimes->{3.6894437356336107`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+This function deploys an APIFunction to the Cloud.
+Requires a single argument, x, which is a String.
+Returns a TextStructure Image (PNG format).\
+\>", "Subsection",
+ CellChangeTimes->{{3.6894430328605537`*^9, 3.689443085385365*^9}, {
+  3.689443768754307*^9, 3.689443771704585*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", 
+  RowBox[{
+   RowBox[{"APIFunction", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\"\<x\>\"", "\[Rule]", "\"\<String\>\""}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"TextStructure", "[", "#x", "]"}], "&"}], ",", "\"\<PNG\>\""}], 
+    "]"}], ",", "\"\<textstructureapi\>\"", ",", 
+   RowBox[{"Permissions", "\[Rule]", "\"\<Public\>\""}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.689441805422289*^9, 3.6894418688920937`*^9}, {
+  3.689441928707288*^9, 3.68944193013019*^9}, {3.689442010242942*^9, 
+  3.689442022530719*^9}, {3.689442085442624*^9, 3.689442089784803*^9}, {
+  3.6894437767151814`*^9, 3.6894437908336782`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"CloudObject", "[", 
+   TagBox[
+    ButtonBox[
+     PaneSelectorBox[{
+      False->"\<\"https://www.wolframcloud.com/objects/user-ad70dea9-e393-\
+43de-a680-a228d820f2ab/textstructureapi\"\>", True->
+      StyleBox["\<\"https://www.wolframcloud.com/objects/user-ad70dea9-e393-\
+43de-a680-a228d820f2ab/textstructureapi\"\>", "HyperlinkActive"]}, Dynamic[
+       CurrentValue["MouseOver"]],
+      BaseStyle->{"Hyperlink"},
+      FrameMargins->0,
+      ImageSize->Automatic],
+     BaseStyle->"Hyperlink",
+     ButtonData->{
+       URL[
+       "https://www.wolframcloud.com/objects/user-ad70dea9-e393-43de-a680-\
+a228d820f2ab/textstructureapi"], None},
+     ButtonNote->
+      "https://www.wolframcloud.com/objects/user-ad70dea9-e393-43de-a680-\
+a228d820f2ab/textstructureapi"],
+    Annotation[#, 
+     "https://www.wolframcloud.com/objects/user-ad70dea9-e393-43de-a680-\
+a228d820f2ab/textstructureapi", "Hyperlink"]& ], "]"}],
+  CloudObject[
+  "https://www.wolframcloud.com/objects/user-ad70dea9-e393-43de-a680-\
+a228d820f2ab/textstructureapi"],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.689443795796773*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1131, 979},
+WindowMargins->{{Automatic, 1}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 9, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 238, 5, 94, "Subsection"],
+Cell[CellGroupData[{
+Cell[843, 31, 611, 13, 32, "Input"],
+Cell[1457, 46, 1190, 30, 36, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2684, 81, 651, 15, 75, "Input"],
+Cell[3338, 98, 123, 2, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3498, 105, 133, 2, 32, "Input"],
+Cell[3634, 109, 262, 6, 24, "Message"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3933, 120, 201, 4, 32, "Input"],
+Cell[4137, 126, 19637, 442, 156, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23823, 574, 291, 6, 94, "Subsection"],
+Cell[CellGroupData[{
+Cell[24139, 584, 672, 14, 32, "Input"],
+Cell[24814, 600, 1167, 29, 36, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

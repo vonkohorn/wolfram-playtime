@@ -1,0 +1,227 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9098,        219]
+NotebookOptionsPosition[      8592,        196]
+NotebookOutlinePosition[      8972,        213]
+CellTagsIndexPosition[      8929,        210]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"i", ":=", 
+   RowBox[{"ImageReflect", "[", 
+    RowBox[{
+     RowBox[{"CurrentImage", "[", 
+      RowBox[{"ImageSize", "\[Rule]", "400"}], "]"}], ",", 
+     RowBox[{"Left", "\[Rule]", "Right"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"edges", "[", 
+   RowBox[{"r_", ",", "t_"}], "]"}], ":=", 
+  RowBox[{"EdgeDetect", "[", 
+   RowBox[{"i", ",", "r", ",", "t", ",", 
+    RowBox[{"Method", "\[Rule]", "\"\<Sobel\>\""}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.659301421382526*^9, 3.659301465425501*^9}, {
+   3.659304905986437*^9, 3.659304931664238*^9}, {3.6593050109901*^9, 
+   3.659305022159103*^9}, {3.659305115658496*^9, 3.6593051197391663`*^9}, {
+   3.659305650385655*^9, 3.659305650494534*^9}, {3.6593058319318733`*^9, 
+   3.659305846537842*^9}, {3.659305995742072*^9, 3.659305996418502*^9}, {
+   3.659306067754524*^9, 3.659306070331115*^9}, 3.659306272677368*^9, {
+   3.6593063088999023`*^9, 3.6593063089144077`*^9}, {3.659306362299777*^9, 
+   3.659306379586603*^9}, {3.6593064476895733`*^9, 3.6593064508088007`*^9}, {
+   3.659365737505293*^9, 3.6593657794802713`*^9}, {3.659366107283922*^9, 
+   3.659366113072488*^9}, {3.6593661453704357`*^9, 3.6593661680050507`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+    RowBox[{"ImageMultiply", "[", "\[IndentingNewLine]", 
+     RowBox[{"i", ",", "\[IndentingNewLine]", 
+      RowBox[{"ColorNegate", "[", 
+       RowBox[{"edges", "[", 
+        RowBox[{"range", ",", "threshold"}], "]"}], "]"}]}], 
+     "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"range", ",", "5"}], "}"}], ",", "1", ",", "10", ",", "1"}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"threshold", ",", "0.04"}], "}"}], ",", "0", ",", ".2"}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.659304628144556*^9, 3.659304672668599*^9}, {
+   3.659304720066176*^9, 3.659304782460043*^9}, 3.659304840077722*^9, {
+   3.6593051033246927`*^9, 3.659305103403266*^9}, {3.6593051582908688`*^9, 
+   3.659305186303664*^9}, {3.659305227191359*^9, 3.659305288091682*^9}, {
+   3.659305402735376*^9, 3.659305461154394*^9}, {3.659305564697818*^9, 
+   3.659305605322699*^9}, {3.659305741954887*^9, 3.6593057633009768`*^9}, {
+   3.6593062651811333`*^9, 3.659306270152166*^9}, {3.6593063027705383`*^9, 
+   3.659306303292162*^9}, {3.6593065809579563`*^9, 3.6593066036705523`*^9}, 
+   3.659306662761265*^9, {3.659366181593738*^9, 3.6593662032093983`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`range$$ = 1, $CellContext`threshold$$ = 
+    0.041, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`range$$], 5}, 1, 10, 1}, {{
+       Hold[$CellContext`threshold$$], 0.04}, 0, 0.2}}, Typeset`size$$ = {
+    480., {176., 184.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`range$1946$$ = 
+    0, $CellContext`threshold$1951$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`range$$ = 5, $CellContext`threshold$$ = 
+        0.04}, "ControllerVariables" :> {
+        Hold[$CellContext`range$$, $CellContext`range$1946$$, 0], 
+        Hold[$CellContext`threshold$$, $CellContext`threshold$1951$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Dynamic[
+        ImageMultiply[$CellContext`i, 
+         ColorNegate[
+          $CellContext`edges[$CellContext`range$$, \
+$CellContext`threshold$$]]]], 
+      "Specifications" :> {{{$CellContext`range$$, 5}, 1, 10, 
+         1}, {{$CellContext`threshold$$, 0.04}, 0, 0.2}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{546., {252., 262.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.70653894309417*^9, 3.706538974377481*^9}, {
+  3.706539039964382*^9, 3.706539057768518*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+    RowBox[{"ImageAdd", "[", "\[IndentingNewLine]", 
+     RowBox[{"i", ",", "\[IndentingNewLine]", 
+      RowBox[{"edges", "[", 
+       RowBox[{"range", ",", "threshold"}], "]"}]}], "\[IndentingNewLine]", 
+     "]"}], "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"range", ",", "5"}], "}"}], ",", "1", ",", "10", ",", "1"}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"threshold", ",", "0.04"}], "}"}], ",", "0", ",", ".2"}], 
+    "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.65936582113041*^9, 3.659365846124855*^9}, {
+  3.65936607327575*^9, 3.6593660738845673`*^9}, {3.659366282290072*^9, 
+  3.659366299147347*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`range$$ = 5, $CellContext`threshold$$ = 
+    0.04, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`range$$], 5}, 1, 10, 1}, {{
+       Hold[$CellContext`threshold$$], 0.04}, 0, 0.2}}, Typeset`size$$ = {
+    480., {176., 184.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`range$1930$$ = 
+    0, $CellContext`threshold$1931$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`range$$ = 5, $CellContext`threshold$$ = 
+        0.04}, "ControllerVariables" :> {
+        Hold[$CellContext`range$$, $CellContext`range$1930$$, 0], 
+        Hold[$CellContext`threshold$$, $CellContext`threshold$1931$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Dynamic[
+        ImageAdd[$CellContext`i, 
+         $CellContext`edges[$CellContext`range$$, $CellContext`threshold$$]]],
+       "Specifications" :> {{{$CellContext`range$$, 5}, 1, 10, 
+         1}, {{$CellContext`threshold$$, 0.04}, 0, 0.2}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{546., {252., 262.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.659365847423723*^9, 3.6593658885984917`*^9, 3.659366031407838*^9, 
+   3.659366074985532*^9, {3.6593662913781433`*^9, 3.659366300106188*^9}, {
+   3.6593664128089447`*^9, 3.659366419723998*^9}, 3.6598084408333473`*^9, 
+   3.659808512213015*^9, 3.682296208357684*^9, {3.706538970345735*^9, 
+   3.706538975259503*^9}}]
+}, Open  ]]
+},
+WindowSize->{1440, 875},
+WindowMargins->{{281, -281}, {Automatic, 30}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 9, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1238, 24, 80, "Input"],
+Cell[CellGroupData[{
+Cell[1821, 48, 1438, 29, 297, "Input"],
+Cell[3262, 79, 2098, 42, 572, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5397, 126, 885, 21, 297, "Input"],
+Cell[6285, 149, 2291, 44, 538, "Output"]
+}, Open  ]]
+}
+]
+*)
+

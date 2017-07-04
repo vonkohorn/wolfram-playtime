@@ -1,0 +1,123 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3031,        115]
+NotebookOptionsPosition[      2351,         85]
+NotebookOutlinePosition[      2704,        101]
+CellTagsIndexPosition[      2661,         98]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Set up", "Section",
+ CellChangeTimes->{{3.687473098467579*^9, 3.687473114427017*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"frames", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"fps", "=", "3"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"task", "=", 
+   RowBox[{"CreateScheduledTask", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"frames", "=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"CurrentImage", "[", "]"}], ",", "frames"}], "}"}]}], ";"}], 
+     ",", 
+     RowBox[{"1", "/", "fps"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.687473058422908*^9, 3.6874730726448193`*^9}, {
+  3.687539497695072*^9, 3.687539497976522*^9}, {3.6875395499005127`*^9, 
+  3.6875395500041933`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Then start and stop recording with", "Section",
+ CellChangeTimes->{3.68747309405494*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"StartScheduledTask", "[", "task", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.6874730869836884`*^9, 3.687473088940195*^9}, {
+  3.68747313253045*^9, 3.6874731686651163`*^9}, {3.687473218003853*^9, 
+  3.687473226755842*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"StopScheduledTask", "[", "task", "]"}], ";"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Might have to stop the camera on Mac", "Section",
+ CellChangeTimes->{{3.687473189655905*^9, 3.687473209208974*^9}}],
+
+Cell[BoxData[
+ RowBox[{"IMAQ`StopCamera", "[", "]"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Finally, to play the video back, run", "Section",
+ CellChangeTimes->{{3.6874731717227793`*^9, 3.687473178493293*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ListAnimate", "[", 
+  RowBox[{
+   RowBox[{"Reverse", "@", 
+    RowBox[{"Flatten", "@", "frames"}]}], ",", "fps"}], "]"}]], "Input"]
+}, Open  ]]
+},
+WindowSize->{808, 905},
+WindowMargins->{{Automatic, 21}, {Automatic, 24}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (June 9, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 91, 1, 64, "Section"],
+Cell[674, 25, 632, 19, 75, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1343, 49, 94, 1, 64, "Section"],
+Cell[1440, 52, 259, 5, 32, "Input"],
+Cell[1702, 59, 91, 2, 32, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1830, 66, 121, 1, 64, "Section"],
+Cell[1954, 69, 63, 1, 32, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2054, 75, 123, 1, 64, "Section"],
+Cell[2180, 78, 155, 4, 32, "Input"]
+}, Open  ]]
+}
+]
+*)
+
